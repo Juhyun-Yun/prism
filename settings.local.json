@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($line = \\(Get-Content \"c:\\\\Users\\\\bacus\\\\Desktop\\\\작업\\\\각기둥과 각뿔\\\\index.html\"\\)[1219]; [System.Text.Encoding]::UTF8.GetBytes\\($line\\) | ForEach-Object { $_ } | Out-Null; \\($line.ToCharArray\\(\\) | ForEach-Object { [int][char]$_ }\\) -join ',')"
+    ]
+  }
+}

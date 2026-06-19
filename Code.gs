@@ -10,7 +10,7 @@ function doGet(e) {
   htmlOutput.addMetaTag('viewport', 'width=device-width, initial-scale=1');
 
   // 브라우저 탭 제목 설정
-  htmlOutput.setTitle('도형 왕국의 잃어버린 일지');
+  htmlOutput.setTitle('도형 왕국의 수수께끼 - 각기둥과 각뿔의 비밀');
 
   // 외부 프레임 접근 허용 보안 정책 설정
   htmlOutput.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);

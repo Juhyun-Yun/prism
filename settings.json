@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "PowerShell(\\(Get-Item index.html\\).Length; \\(Get-Content index.html | Measure-Object -Line\\).Lines)"
-    ]
-  }
-}

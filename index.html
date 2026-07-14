@@ -315,7 +315,7 @@
 
         // ============ AVATAR GUIDE COMPONENT ============
         // side='left'(기본): 아바타 왼쪽 + 말풍선 오른쪽 / side='right': 아바타 오른쪽 끝 + 말풍선 왼쪽
-        const AvatarGuide = ({ char = 'elder', text, side = 'left' }) => {
+        const AvatarGuide = ({ char = 'elder', text, side = 'left', avatarSize = 'w-14 h-14' }) => {
             const avatars = {
                 elder: { name: '👴 마을 어른', img: AVATAR_IMG.elder, border: 'border-amber-600', textBg: 'bg-amber-50/90 border-amber-300', arrowColor: '#fffbeb' },
                 granny: { name: '👵 사서 할머니', img: AVATAR_IMG.granny, border: 'border-sky-600', textBg: 'bg-sky-50/90 border-sky-300', arrowColor: '#f0f9ff' },
@@ -329,7 +329,7 @@
             return (
                 <div className={`flex gap-2 items-center shrink-0 mb-1 w-full ${isRight ? 'flex-row-reverse' : ''}`}>
                     {/* 아바타 (이름표 제거 - 자리 절약) */}
-                    <div className={`w-14 h-14 rounded-full overflow-hidden ink-border ${info.border} stamp-shadow bg-white shrink-0`} title={info.name}>
+                    <div className={`${avatarSize} rounded-full overflow-hidden ink-border ${info.border} stamp-shadow bg-white shrink-0`} title={info.name}>
                         <img src={info.img} className="w-full h-full object-cover" alt={info.name} />
                     </div>
 
@@ -1191,34 +1191,34 @@
 
             if (showStory) {
                 return (
-                    <div className="h-full flex items-center justify-center p-2 map-bg relative overflow-y-auto">
-                        <div className="w-full max-w-5xl bg-white/95 ink-border rounded-2xl p-4 stamp-shadow-deep relative my-auto">
-                            <div className="absolute -top-2 -right-2 w-14 h-14 bg-rose-500 rounded-full flex items-center justify-center text-white font-jua text-sm rotate-12 ink-border leading-tight">
+                    <div className="h-full flex items-center justify-center p-4 map-bg relative overflow-y-auto">
+                        <div className="w-full max-w-6xl max-h-full bg-white/95 ink-border rounded-2xl p-6 sm:p-8 stamp-shadow-deep relative my-auto flex flex-col justify-center gap-6 sm:gap-8">
+                            <div className="absolute -top-3 -right-3 w-16 h-16 bg-rose-500 rounded-full flex items-center justify-center text-white font-jua text-base rotate-12 ink-border leading-tight">
                                 도와줘!
                             </div>
-                            <div className="text-center mb-3">
-                                <div className="inline-block px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-base font-bold tracking-widest">
+                            <div className="text-center">
+                                <div className="inline-block px-4 py-1 bg-amber-100 text-amber-800 rounded-full text-base font-bold tracking-widest">
                                     📖 PROLOGUE · 도형 왕국 입구
                                 </div>
-                                <h1 className="font-jua text-3xl text-amber-900 mt-2 flex items-center justify-center gap-3">
+                                <h1 className="font-jua text-3xl sm:text-4xl text-amber-900 mt-4 flex items-center justify-center gap-3">
                                     <div className="w-12 h-12 rounded-full overflow-hidden ink-border border-amber-600 stamp-shadow bg-white shrink-0">
                                         <img src={AVATAR_IMG.elder} className="w-full h-full object-cover" alt="마을 어른" />
                                     </div>
                                     마을 어른의 부탁
                                 </h1>
                             </div>
-                            <div className="paper-bg p-4 rounded-xl border-2 border-amber-200 mb-3">
-                                <AvatarGuide char="elder" text={
-                                    <div className="text-base leading-relaxed">
-                                        <p className="mb-2">"어이, <b className="text-rose-700">{studentName}</b>! 잘 왔어! 나는 도형 왕국에서 평생을 산 <b>마을 어른</b>이야."</p>
-                                        <p className="mb-2">"여긴 옛날부터 <b className="text-emerald-700">각기둥 마을</b>과 <b className="text-rose-700">각뿔 마을</b>이 평화롭게 살고 있었지."</p>
-                                        <p className="mb-2">"그런데 얼마 전, 마을 친구들의 <b>이름과 비밀</b>이 모두 사라져 버렸어. 친구들이 자기가 누구인지도 모르고 있단다..."</p>
+                            <div className="paper-bg p-5 sm:p-7 rounded-xl border-2 border-amber-200">
+                                <AvatarGuide char="elder" avatarSize="w-20 h-20 sm:w-24 sm:h-24" text={
+                                    <div className="text-xl sm:text-2xl leading-loose space-y-4">
+                                        <p>"어이, <b className="text-rose-700">{studentName}</b>! 잘 왔어! 나는 도형 왕국에서 평생을 산 <b>마을 어른</b>이야."</p>
+                                        <p>"여긴 옛날부터 <b className="text-emerald-700">각기둥 마을</b>과 <b className="text-rose-700">각뿔 마을</b>이 평화롭게 살고 있었지."</p>
+                                        <p>"그런데 얼마 전, 마을 친구들의 <b>이름과 비밀</b>이 모두 사라져 버렸어. 친구들이 자기가 누구인지도 모르고 있단다..."</p>
                                         <p>"{studentName}, 마을 곳곳을 돌아다니며 친구들을 만나고 <b>다섯 가지 미션</b>을 풀어 잃어버린 비밀을 찾아줄래?"</p>
                                     </div>
                                 } />
                             </div>
                             <button onClick={() => setShowStory(false)}
-                                className="w-full max-w-md mx-auto block py-2.5 bg-amber-700 text-white rounded-xl font-jua text-xl hover:bg-amber-800 stamp-shadow">
+                                className="w-full max-w-md mx-auto block py-3 bg-amber-700 text-white rounded-xl font-jua text-xl hover:bg-amber-800 stamp-shadow">
                                 <Icon name="Map" className="w-5 h-5 inline mr-2" />
                                 도형 왕국 지도 펼치기
                             </button>
